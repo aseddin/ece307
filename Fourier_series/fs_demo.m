@@ -2,16 +2,20 @@ close all;
 
 %% Fourier Series Coefficients [CHANGE ACCORDING TO YOUR f(t)]
 
-% Fundamental angular frequency [rad/s]
-w0 = pi; 
 
 % Coefficients as a matrix
+% Square wave 
+w0 = pi; 
 a0 = 0.5;
 an = [0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0];
 bn =[0.6366         0    0.2122         0    0.1273         0    0.0909         0    0.0707         0    0.0579         0    0.0490         0    0.0424         0    0.0374         0    0.0335         0];
 
-
-%% Generate and plot f(t) [NO CHANGE NECESSRY]
+% Sawtooth
+% w0 = 2 * pi / 3;
+% a0 = 3;
+% an = [0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0];
+% bn = [1.9099    0.9549    0.6366    0.4775    0.3820    0.3183    0.2728    0.2387    0.2122    0.1910    0.1736    0.1592    0.1469    0.1364    0.1273    0.1194    0.1123    0.1061    0.1005    0.0955];
+%% Generate and plot f(t) [NO CHANGE NEEDED]
 
 % Generate enough time points for a single period
 t = linspace(0, 2*pi/w0, 1000);
@@ -50,7 +54,7 @@ for n = 1:length(an)
     title('b_n sin(n \omega_0 t)');
     xlabel('t');
     
-    %nth harmonic
+    % nth harmonic
     subplot(4, 1, 3);
     plot(t, s1 + s2); 
     title('a_n cos(n \omega_0 t) + b_n sin(n \omega_0 t)');
@@ -65,7 +69,7 @@ for n = 1:length(an)
     
 end
 
-%% Frequency Spectrum plots [NO CHANGE NECESSRY]
+%% Frequency Spectrum plots [NO CHANGE NEEDED]
 
 spectrum = [a0, an- bn*1j];
 harmonic = 0:length(spectrum) - 1;
